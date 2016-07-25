@@ -1,0 +1,73 @@
+AppBundle\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    indexes:
+        app_config_id:
+            columns:
+                - app_config_id
+        store_credential_id:
+            columns:
+                - store_credential_id
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        password:
+            type: string
+            nullable: false
+            length: 200
+            fixed: true
+            comment: ''
+        salt:
+            type: string
+            nullable: false
+            length: 150
+            fixed: true
+            comment: ''
+        roles:
+            type: json_array
+            nullable: false
+            length: 100
+        dateCreated:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    uniqueConstraints:
+        user:
+            columns:
+                - email
+    oneToOne:
+        authCredentials:
+            targetEntity: AppBundle\Entity\StoreCredential
+            cascade: {  }
+            mappedBy: null
+            inversedBy: user
+            joinColumns:
+                store_credential_id:
+                    referencedColumnName: id
+        appConfig:
+            targetEntity: AppBundle\Entity\AppConfig
+            cascade: {  }
+            mappedBy: null
+            inversedBy: user
+            joinColumns:
+                app_config_id:
+                    referencedColumnName: id

@@ -1,0 +1,294 @@
+{% extends 'AppBundle:Layout:app.html.twig' %}
+{% block content %}
+	<section id="widget-editor" class="active">
+		<h3 class="text-center">Choose a theme format that best suits your reviews</h3>
+		<!-- Hidden radios for theme selection -->
+		<div class="hidden">
+			<input type="checkbox" name="widget-theme" data-name="widget1" value="widget1" {{theme_selected == 'widget1' ? 'checked' : ''}}>
+			<input type="checkbox" name="widget-theme" data-name="widget2" value="widget2" {{theme_selected == 'widget2' ? 'checked' : ''}}>
+			<input type="checkbox" name="widget-theme" data-name="widget3"value="widget3" {{theme_selected == 'widget3' ? 'checked' : ''}}>
+			<input type="checkbox" name="widget-theme" data-name="widget4" value="widget4" {{theme_selected == 'widget4' ? 'checked' : ''}}>
+		</div>
+
+		{# <div class="board">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="theme-wrapper {{theme_selected == 'widget1' ? 'selected' : ''}}" data-theme="widget1" data-name="widget1">
+						<i class="icon ion-checkmark"></i>
+						<h4>Theme 1</h4>
+						<div class="widget-theme theme-1">
+							<article>
+								<figure>JD</figure>
+								<aside>
+									<div class="review-rating" data-rating="5"></div>
+									<div class="review-author">John Doe</div>
+									<div class="review-title">Would recommend!</div>
+									<div class="review-statement">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quis doloremque temporibus voluptatum, quae adipisci vitae delectus quaerat quibusdam ad, reiciendis.</div>
+								</aside>
+							</article>
+
+							<article>
+								<figure>JD</figure>
+								<aside>
+									<div class="review-rating" data-rating="5"></div>
+									<div class="review-author">John Doe</div>
+									<div class="review-title">Would recommend!</div>
+									<div class="review-statement">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis hic, cupiditate ullam, excepturi debitis adipisci doloremque quasi commodi molestias esse min.</div>
+								</aside>
+
+							</article>
+
+							<article>
+								<figure>JD</figure>
+								<aside>
+									<div class="review-rating" data-rating="5"></div>
+									<div class="review-author">John Doe</div>
+									<div class="review-title">Would recommend!</div>
+									<div class="review-statement">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere debitis facilis alias est voluptate quo, fuga consequuntur, a eum harum saepe ratione, laborarticle></div>
+								</aside>
+							</article>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="theme-wrapper {{theme_selected == 'widget2' ? 'selected' : ''}}" data-theme="widget2"  data-name="widget2">
+						<i class="icon ion-checkmark"></i>
+						<i class="fa fa-check"></i>
+						<h4>Theme 2</h4>
+						<div class="widget-theme theme-2">
+							<article>
+								<div class="review-title">AWESOME!</div>
+								<div class="review-rating" data-rating="3"></div>
+								<div>by <span class="review-author">James Dean</span></div>
+								<div class="review-statement">Good quality, reasonable price!</div>
+							</article>
+							<article>
+								<div class="review-title">AWESOME!</div>
+								<div class="review-rating" data-rating="3"></div>
+								<div>by <span class="review-author">James Dean</span></div>
+								<div class="review-statement">Good quality, reasonable price!</div>
+							</article>
+							<article>
+								<div class="review-title">AWESOME!</div>
+								<div class="review-rating" data-rating="3"></div>
+								<div>by <span class="review-author">James Dean</span></div>
+								<div class="review-statement">Good quality, reasonable price!</div>
+							</article>
+						</div>	
+					</div>
+				</div>	
+			</div> #}
+		{# </div> #}
+		<div class="board">
+			<div class="row">
+				<div class="carousel slide multi-item-carousel" id="theCarousel">
+		 				<div class="carousel-inner">
+						<div class="item active">
+							<div class="col-md-6 theme-wrapper {{theme_selected == 'widget1' ? 'selected' : ''}}" data-theme="widget1" data-name="widget1">
+								<i class="icon ion-checkmark"></i>
+								<h4>Theme 1</h4>
+								<div class="widget-theme theme-1">
+									<article>
+										<figure>JD</figure>
+										<aside>
+											<div class="review-rating" data-rating="5"></div>
+											<div class="review-author">John Doe</div>
+											<div class="review-title">Would recommend!</div>
+											<div class="review-statement">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur quis doloremque temporibus voluptatum, quae adipisci vitae delectus quaerat quibusdam ad, reiciendis.</div>
+										</aside>
+									</article>
+
+									<article>
+										<figure>JD</figure>
+										<aside>
+											<div class="review-rating" data-rating="5"></div>
+											<div class="review-author">John Doe</div>
+											<div class="review-title">Would recommend!</div>
+											<div class="review-statement">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis hic, cupiditate ullam, excepturi debitis adipisci doloremque quasi commodi molestias esse min.</div>
+										</aside>
+
+									</article>
+
+									<article>
+										<figure>JD</figure>
+										<aside>
+											<div class="review-rating" data-rating="5"></div>
+											<div class="review-author">John Doe</div>
+											<div class="review-title">Would recommend!</div>
+											<div class="review-statement">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere debitis facilis alias est voluptate quo, fuga consequuntur, a eum harum saepe ratione, laborarticle></div>
+										</aside>
+									</article>
+								</div>
+							</div>
+							<div class="col-md-6 theme-wrapper {{theme_selected == 'widget2' ? 'selected' : ''}}" data-theme="widget2" data-name="widget2">
+								<i class="icon ion-checkmark"></i>
+								<i class="fa fa-check"></i>
+								<h4>Theme 2</h4>
+								<div class="widget-theme theme-2">
+									<article>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-rating" data-rating="3"></div>
+										<div>by <span class="review-author">James Dean</span></div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									<article>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-rating" data-rating="3"></div>
+										<div>by <span class="review-author">James Dean</span></div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									<article>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-rating" data-rating="3"></div>
+										<div>by <span class="review-author">James Dean</span></div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+								</div>	
+							</div>
+							
+						</div>
+						<div class="item">
+							<div class="col-md-6 theme-wrapper {{theme_selected == 'widget3' ? 'selected' : ''}}" data-theme="widget3" data-name="widget3">
+								<i class="icon ion-checkmark"></i>
+								<i class="fa fa-check"></i>
+								<h4>Theme 3</h4>
+								<div class="widget-theme theme-3">
+									<article>
+										
+										<div class="review-date"><time datetime="Tue, 01 Apr 2014 22:29:10">Tue, 01 Apr 2014 22:29:10</time></div>
+										<div><span class="review-author">James Dean</span></div>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-rating" data-rating="3"></div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									<article>
+										<div class="review-date"><time datetime="Tue, 01 Apr 2014 22:29:10">Tue, 01 Apr 2014 22:29:10</time></div>
+										<div><span class="review-author">James Dean</span></div>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-rating" data-rating="3"></div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									<article>
+										<div class="review-date"><time datetime="Tue, 01 Apr 2014 22:29:10">Tue, 01 Apr 2014 22:29:10</time></div>
+										<div><span class="review-author">James Dean</span></div>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-rating" data-rating="3"></div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+								</div>	
+							</div>
+							<div class="col-md-6 theme-wrapper {{theme_selected == 'widget4' ? 'selected' : ''}}" data-theme="widget4" data-name="widget4">
+								<i class="icon ion-checkmark"></i>
+								<i class="fa fa-check"></i>
+								<h4>Theme 4 (Not Yet Available)</h4>
+								<div class="widget-theme theme-4">
+									<article>
+										<div class="review-date"><time datetime="Tue, 01 Apr 2014 22:29:10">Tue, 01 Apr 2014 22:29:10</time></div>
+										<div><span class="review-author">James Dean</span></div>
+										<div class="review-rating" data-rating="3"></div>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									<article>
+										<div class="review-date"><time datetime="Tue, 01 Apr 2014 22:29:10">Tue, 01 Apr 2014 22:29:10</time></div>
+										<div><span class="review-author">James Dean</span></div>
+										<div class="review-rating" data-rating="3"></div>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									<article>
+										<div class="review-date"><time datetime="Tue, 01 Apr 2014 22:29:10">Tue, 01 Apr 2014 22:29:10</time></div>
+										<div><span class="review-author">James Dean</span></div>
+										<div class="review-rating" data-rating="3"></div>
+										<div class="review-title">AWESOME!</div>
+										<div class="review-statement">Good quality, reasonable price!</div>
+									</article>
+									
+								</div>	
+							</div>
+						</div>
+					</div>
+					<a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="ion-chevron-left"></i></a>
+					<a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="ion-chevron-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="manage-reviews">
+		<h3>Manage Reviews</h3>
+			<div class="row">
+				<div class="col-md-8">
+					<table class="table data-table" id="reviews">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Name</th>
+								<th>Title</th>
+								<th>Message</th>
+								<th>Rating</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if product_reviews is iterable %}
+								{% for pr in product_reviews %}
+									<tr>
+										<td><input class="review-chk" {{pr.is_selected ? 'checked' : ''}} type="checkbox" name="review-select" data-id="{{pr.id}}" data-productid="{{pr.product_id}}"></td>
+										<td>{{pr.author}}</td>
+										<td>{{pr.title}}</td>
+										<td>{{pr.review}}</td>
+										<td>{{pr.rating}}</td>
+									</tr>
+								{% endfor %}
+							{% endif %}
+
+							{% if product_reviews is not iterable %}
+								<tr>No Product Reviews.</tr>
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-4">
+					<!-- Fields for other widget details -->
+					<div class="form-container">
+						<input type="hidden" name="widget-id" value="{{widget ? widget.id : ''}}">
+						<input type="hidden" name="widget-theme" value="{{theme_selected}}">
+						<div class="form-field">
+							<label for="">*Title of your Widget</label>
+							<input type="text" name="widget-name" id="" value="{{widget ? widget.name : ''}}">
+						</div>
+						<div class="form-field">
+							<label for="">*Container Element Id(Value of Id attribute on where you would like to put your widget)</label>
+							<input type="text" name="widget-container-id" id="" value="{{widget ? widget.containerId : ''}}">
+							
+						</div>
+						<div class="form-field">
+							<label for="">Status</label>
+							<select name="widget-status" id="">
+								<option value="1">Enabled</option>
+								<option value="0">Disabled</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+	</section>
+	<section id="generate-script">
+		<div class="board">
+			<dl>
+				<dt>Title of Your Widget</dt><dd id="widget-name-value">value</dd>
+				<dt>Container Element Id</dt><dd id="widget-container-value">value</dd>
+			</dl>
+			<p>Instruction: Copy this snippet to your frontend store template before closing body element.</p>
+			<textarea readonly cols="30" rows="5" id="widget-script-value">SCRIPT HERE</textarea>
+		</div>
+
+		<a href="{{path('app_manage_widget')}}" class="btn btn-small btn-blue pull-right">Create New Widget</a>
+
+	</section>
+	<div class="section-nav">
+		<p class="nav-left pull-left" style="display:none;"><button class="btn btn-small btn-blue"><i class="icon ion-ios-arrow-thin-left"></i>&nbsp;<span>Choose theme</span></button></p>
+		<p class="nav-right pull-right"><button class="btn btn-small btn-blue"><span>Manage Reviews</span>&nbsp;<i class="icon ion-ios-arrow-thin-right"></i></button></p>
+	</div>
+{% endblock %}

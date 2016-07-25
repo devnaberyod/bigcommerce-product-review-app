@@ -1,0 +1,136 @@
+<html>
+<head>
+	<link rel="stylesheet" href="{{ absolute_url(asset('bundles/app/assets/bootstrap.min.css')) }}">
+	<link rel="stylesheet" href="{{ absolute_url(asset('bundles/app/assets/ionicons.min.css')) }}">
+	<link rel="stylesheet" href="{{ absolute_url(asset('bundles/app/assets/styles.css')) }}">
+	<link rel="stylesheet"
+			href="{{ asset('assets/vendor/datatables.net-dt/css/jquery.dataTables.min.css') }}">
+          
+</head>
+<body>
+	<header>
+		<hr class="header-line">
+		<div class="container">
+			<h2 class="logo pull-left"><a href="{{path('app_dashboard')}}"><img src="{{absolute_url(asset('bundles/app/assets/clevereviews-logo.png'))}}" alt="Crave Coffee"></a></h2>
+			<div class="menubar pull-right">
+				<ul class="list-inline">
+					<li><i class="icon ion-speedometer"></i><a href="{{path('app_dashboard')}}">Dashboard</a></li>
+					<li><i class="icon ion-easel"></i><a href="{{path('app_manage_widget')}}">Create Widget</a></li>
+					<li><i class="icon ion-gear-a"></i><a href="{{path('app_settings')}}">Settings</a></li>
+					<li><a class="icon ion-log-out" href="{{path('app_auth_logout')}}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	
+	<div class="main-content">
+		<div class="container">
+			<!-- Table with published & unpublished reviews -->
+			{# <section class="manage-reviews"> #}
+				{% block content %}{% endblock %}
+			{# </section> #}
+		</div>
+	</div>
+
+	<script src="{{ asset('bundles/app/assets/jquery-1.12.4.min.js') }}"></script>
+	<script src="{{ asset('bundles/app/assets/common.js') }}"></script>
+	<script src="{{ asset('bundles/app/assets/bootstrap.min.js') }}"></script>
+	<script 
+		src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+	<script 
+		src="{{ asset('assets/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			widgetApiUrl = "{{path('api_widget_add')}}";
+			apiKey = "{{api_key}}";
+
+			var SearchProduct = function() {
+				//setup before functions
+				var typingTimer;                //timer identifier
+				var doneTypingInterval = 1000;  //time in ms, 5 second for example
+				var $input = $('input#search');
+				var prodId = 0;
+				//on keyup, start the countdown
+				$input.on('keyup', function () {
+				  clearTimeout(typingTimer);
+				  typingTimer = setTimeout(doneTyping, doneTypingInterval);
+				});
+
+				//on keydown, clear the countdown 
+				$input.on('keydown', function () {
+				  clearTimeout(typingTimer);
+				});
+
+				//user is "finished typing," do something
+				function doneTyping () {
+					var url = "{{path('api_product_reviews')}}" + '/' +  $input.val();
+					$.ajax({
+						url: url,
+						data: {api_key: apiKey},
+						success: function(res) {
+							console.log(res);
+						}
+					});
+					
+				}
+			}
+
+			SearchProduct();
+
+			$('.data-table').DataTable({
+				"language": {
+					"lengthMenu": "_MENU_ No of Entries to Display"
+					// "zeroRecords": "Nothing found - sorry",
+					// "info": "Showing page _PAGE_ of _PAGES_",
+					// "infoEmpty": "No records available",
+					// "infoFiltered": "(filtered from _MAX_ total records)"
+				}
+			});
+			
+			// $('.review-chk').on('click', function(e) {
+			// 	var elem = $(this);
+			// 	var revId = elem.data('id');
+			// 	var prodId = elem.data('productid');
+			// 	var currentValues;
+
+			// 	if(elem.prop('checked')) {
+			// 		if(widgetDataSelected[prodId]) {
+			// 			var newSelected = {'prod_id'};
+			// 			currentValues = widgetDataSelected[prodId];
+			// 			console.log("old values", currentValues);
+			// 			console.log("new values", currentValues.concat([revId]));
+			// 			widgetDataSelected[prodId] = currentValues.concat([revId]);
+			// 		} else 
+			// 			widgetDataSelected[prodId] = [revId];
+			// 	} else {
+			// 		currentValues = widgetDataSelected[prodId];
+			// 		var index = currentValues.indexOf(revId);
+
+			// 		currentValues.splice(index, 1);
+
+			// 		widgetDataSelected[prodId] = currentValues;
+			// 	}
+
+			// 	console.log(widgetDataSelected);
+			// });
+
+			$('a#link-get-widget').on('click', function(e) {
+				e.preventDefault();
+				var id = $(this).data('id');
+				var youarel = $(this).data('url');
+
+				$('#view-script').modal('show');
+				
+				$.ajax({
+					url: youarel,
+					type: 'get',
+					complete: function(res, status) {
+						$('#widget-script-value').val(res.responseText);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>

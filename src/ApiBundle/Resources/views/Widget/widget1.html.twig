@@ -1,0 +1,76 @@
+
+<style type="text/css">
+	.clevrev-theme1-wrapper{
+		width: 100%;
+		height: inherit; 
+		position: relative; 
+		padding: 40px 20px; 
+		background: #e4e9ef;
+		color: #8899a6;
+		font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+		font-size: 14px;
+	}
+	.clevrev-theme1-title{
+		text-align: center;
+		font-weight: 600;
+		margin-bottom: 20px;
+	}
+	.clevrev-theme1-widget{
+		background: #fff;
+		overflow-y: scroll;
+		height: calc(100% - 20px);
+	}
+	.clevrev-theme1-widget::-webkit-scrollbar {
+	    width: 12px;
+	    background-color: #F5F5F5;
+	}
+	.clevrev-theme1-widget::-webkit-scrollbar-thumb {
+	    border-radius: 10px;
+	    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	    background-color: #a5aab1;
+	}
+	.clevrev-theme1-widget::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	    border-radius: 10px;
+	    background-color: #F5F5F5;
+	}
+	.clevrev-theme1-review{
+		padding: 20px; 
+		border-bottom: 1px dashed #ddd;
+	}
+	.clevrev-theme1-review-rating{
+		float: right; 
+		color: #efe36c;
+	    font-size: 20px;
+		line-height: 1;
+	}
+	.clevrev-theme1-review-author{
+		padding-bottom: 10px;
+	}
+	.clevrev-theme1-review-title{
+		font-weight: 600;
+	}
+</style>
+
+<div class="clevrev-theme1-wrapper">
+	<h3 class="clevrev-theme1-title">{{widget_name}}</h3>
+	<div class="clevrev-theme1-widget">
+		{% if reviews is iterable %}
+			{% for rev in reviews %}
+				<article class="clevrev-theme1-review">
+					<div class="clevrev-theme1-review-rating" data-rating="{{rev.rating}}">
+						{% for i in range(1, rev.rating) %}
+							<span data-id="{{i}}">★</span>
+						{% endfor %}
+					</div>
+					<div class="clevrev-theme1-review-author">{{rev.author}}</div>
+					<div class="clevrev-theme1-review-title">{{rev.title}}</div>
+					<div class="review-statement">
+						<p>{{rev.review}}</p>
+					</div>
+				</article>
+			{% endfor %}
+		{% endif %}	
+	</div>	
+</div>
+

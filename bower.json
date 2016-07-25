@@ -1,0 +1,16 @@
+{
+  "name": "app-clevreviews",
+  "authors": [
+    "ddon15 <diovannie@cleverlocal.com.au>"
+  ],
+  "description": "Bigcommerce app to create store product review widget",
+  "main": "",
+  "license": "MIT",
+  "homepage": "www.cleverlocal.com",
+  "private": true,
+  "dependencies": {
+    "datatables.net-dt": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
+    "datatables.net-select": "^1.2.0"
+  }
+}

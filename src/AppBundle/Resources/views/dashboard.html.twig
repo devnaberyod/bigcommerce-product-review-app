@@ -1,0 +1,154 @@
+{% extends 'AppBundle:Layout:app.html.twig' %}
+{% block content %}
+	<section class="manage-reviews active">
+		<h3 class="pull-left">Widgets</h3>
+		<a href="{{path('app_manage_widget')}}" class="btn btn-small btn-blue pull-right">New Widget</a>
+		<table class="table data-table">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Theme</th>
+					<th>Element Id Value (#)</th>
+					<th>Date Created</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if widgets is iterable %}
+					{% for w in widgets %}
+						<tr>
+							<td>{{w.name}}</td>
+							<td>{{w.theme}}</td>
+							<td>{{w.containerId}}</td>
+							<td>{{w.dateCreated|date('Y-m-d g:ia', false)}}</td>		
+							<td class="action">
+								<a href="{{path('api_widget_delete', {id: w.id})}}" class="ion-trash-a remove"></a>
+								<a href="{{path('app_manage_widget', {id: w.id})}}" class="ion-edit edit"></a>
+								<a href="#" id="link-get-widget" data-url="{{path('api_widget_get_script', {id: w.id, api_key: api_key})}}" class="ion-ios-eye view"></a>
+							</td>		
+						</tr>
+					{% endfor %}
+				{% endif %}
+
+				{% if widgets is not iterable %}
+					<tr>No Widget.</tr>
+				{% endif %}
+			</tbody>
+		</table>
+
+		{# Modal View Script #}
+		<div class="modal fade" id="view-script" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog modal-md" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		      	<h3>Widget Script</h3>
+		      </div>
+		      <div class="modal-body">
+		      	<p>Instruction: Copy this script to your frontend store template before closing body element.</p>
+				<textarea readonly cols="30" rows="5" id="widget-script-value">Please wait while generating the script.</textarea>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+	</section>
+
+
+	{# Version 2 preperation #}
+	{# <section class="manage-reviews active">
+		<h3 class="pull-left">Product Reviews</h3>
+		<a href="#" class="btn btn-small btn-blue pull-right" data-toggle="modal" data-target="#product-search-modal">New Product Reviews</a>
+		<table class="table data-table">
+			<thead>
+				<tr>
+					<th><input type="checkbox"></th>
+					<th>Reviewer</th>
+					<th>Product Name</th>
+					<th>Title</th>
+					<th>Message</th>
+					<th>Rating</th>
+					<th>Date Created</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if product_reviews is iterable %}
+					{% for pr in product_reviews %}
+						<tr>
+							<td><input type="checkbox" data-id="{{pr.id}}"></td>
+							<td>{{pr.author}}</td>
+							<td>{{pr.product_name}}</td>
+							<td>{{pr.title}}</td>
+							<td>{{pr.review}}</td>
+							<td>{{pr.rating}}</td>
+							<td>{{pr.date_created|date('Y-m-d g:ia', false)}}</td>		
+							<td><a href="#" class="btn btn-small btn-green pull-right" data-id="{{p.id}}"></a></td>		
+						</tr>
+					{% endfor %}
+				{% endif %}
+
+				{% if product_reviews is not iterable %}
+					<tr>No Product Reviews.</tr>
+				{% endif %}
+			</tbody>
+		</table>
+	</section> #}
+
+{# Version 2 preperation #}
+{# <section class="manage-reviews active">
+		<h3 class="pull-left">Products</h3>
+		<table class="table data-table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Product Name</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if products is iterable %}
+					{% for p in products %}
+						<tr>
+							<td>{{p.id}}</td>
+							<td>{{p.name}}</td>
+							<td><a href="#" class="btn btn-small btn-green pull-right" data-id="{{p.id}}">Get Customer Reviews</a></td>
+						</tr>
+					{% endfor %}
+				{% endif %}
+
+				{% if products is not iterable %}
+					<tr>No Products.</tr>
+				{% endif %}
+			</tbody>
+		</table>
+	</section>
+	<!-- Modal -->
+	<div class="modal fade" id="product-search-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <input type="text" id="search" placeholder="Enter Product Id">
+	      </div>
+	      <div class="modal-body">
+			<table class="table">
+				<tr>
+					<th><input type="checkbox"></th>
+					<th>Reviewer Name</th>
+					<th>Title</th>
+					<th>Message</th>
+					<th>Rating</th>
+				</tr>
+			</table>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Add</button>
+	      </div>
+	    </div>
+	  </div>
+	</div> #}
+	<!-- Modal -->
+{% endblock %}

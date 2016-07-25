@@ -1,0 +1,67 @@
+AppBundle\Entity\Widget:
+    type: entity
+    table: widget
+    repositoryClass: AppBundle\Repository\WidgetRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    indexes:
+        user_id:
+            columns:
+                - user_id
+  
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        theme:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+        size:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+        containerId:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: 'Element Container Id where to append this widget'
+        dateCreated:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        data:
+            type: json_array
+            nullable: false
+            length: 250
+        status:
+            type: integer
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+    manyToOne:
+        user:
+            targetEntity: AppBundle\Entity\User
+            cascade: {  }
+            mappedBy: user_id
+            inversedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+
+    

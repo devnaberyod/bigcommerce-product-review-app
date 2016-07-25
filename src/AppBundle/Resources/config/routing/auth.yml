@@ -1,0 +1,19 @@
+app_callback:
+    path: /app/install
+    defaults: {_controller: AppBundle:Auth:appInstall}
+
+app_load:
+    path: /app/load
+    defaults: {_controller: AppBundle:Auth:appLoad}
+
+app_load:
+    path: /app/uninstall
+    defaults: {_controller: AppBundle:Auth:appUninstall}
+
+app_auth_logout:
+    path: /logout
+    # defaults: {_controller: AppBundle:Auth:logout}
+
+app_auth_login_check:
+    path: /loginshek
+    # defaults: {_controller: AppBundle:Auth:loginshek}

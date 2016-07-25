@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ absolute_url(asset('bundles/app/assets/bootstrap.min.css')) }}">
+	<link rel="stylesheet" href="{{ absolute_url(asset('bundles/app/assets/ionicons.min.css')) }}">
+	<link rel="stylesheet" href="{{ absolute_url(asset('bundles/app/assets/styles.css')) }}">
+</head>
+<body class="login-page">
+	<header>
+		<hr class="header-line">
+	</header>
+
+	<section class="login-box">
+		{% block content %}
+
+		{% endblock %}
+	</section>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+{% extends 'AppBundle:Layout:login.html.twig' %}
+
+{% block content %}
+    <div class="logo"><img src="{{asset('bundles/app/assets/clevereviews-logo.png')}}" alt=""></div>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        {% if app.request.get('is_new') is defined and app.request.get('is_new') %}
+            <div class="alert alert-info">Please check your email for the user credentials to login the app.</div>
+        {% endif %}
+      
+        <div class="login-form">
+            <form action="{{path('app_login')}}" method="post">
+                <div class="form-field">
+                    <i class="icon ion-ios-person"></i>
+                    <input type="text" placeholder="Username" name="_username">
+                </div>
+                <div class="form-field">
+                    <i class="icon ion-ios-locked"></i>
+                    <input type="password" placeholder="Password" name="_password">
+                </div>
+
+                <input class="btn btn-blue" type="submit" value="Login">
+
+            </form>
+        </div>
+{% endblock %}

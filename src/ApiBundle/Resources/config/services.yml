@@ -1,0 +1,11 @@
+services:
+#    api.example:
+#        class: ApiBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+    api_key_user_provider:
+        class: ApiBundle\Security\ApiKeyUserProvider
+        arguments: ["@doctrine.orm.entity_manager"]
+
+    apikey_authenticator:
+        class:  ApiBundle\Security\ApiKeyAuthenticator
+        public: false

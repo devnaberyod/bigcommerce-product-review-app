@@ -1,0 +1,12 @@
+parameters:
+    key_generator.class: AppBundle\Utils\KeyGenerator
+
+services:
+    app.key_generator:
+        class: '%key_generator.class%'
+
+    app.widget_data_manager:
+        class:   WidgetManager
+        factory: [WidgetManagerManagerFactory, createWidgetData]
+        arguments:
+            - '@templating'

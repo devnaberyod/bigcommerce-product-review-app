@@ -1,0 +1,11 @@
+app:
+      resource: "@AppBundle/Resources/config/routing/app.yml"
+      prefix: /
+
+auth:
+      resource: "@AppBundle/Resources/config/routing/auth.yml"
+      prefix: /auth
+
+api:
+    resource: "@ApiBundle/Resources/config/routing.yml"
+    prefix:   /api/v1

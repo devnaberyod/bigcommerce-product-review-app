@@ -1,0 +1,69 @@
+AppBundle\Entity\StoreProductReview:
+    type: entity
+    table: store_product_reviews
+    repositoryClass: AppBundle\Repository\StoreProductReviewRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    indexes:
+        userId:
+          columns:
+              - user_id
+    fields:
+        userId:
+            type: integer
+            nullable: false
+        title:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: false
+            length: 20
+            fixed: false
+            comment: ''
+        name:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+        message:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            comment: ''
+        rating:
+            type: integer
+            nullable: false
+            length: 1
+            fixed: false
+        status:
+            type: integer
+            nullable: false
+            length: 1
+            fixed: false
+            comment: ''
+        dateCreated:
+            type: datetime
+            columnDefinition: TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+        manyToOne:
+            productReviews:
+                targetEntity: AppBundle\Entity\User
+                cascade: {  }
+                mappedBy: user_id
+                inversedBy: null
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id

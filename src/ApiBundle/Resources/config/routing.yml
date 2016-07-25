@@ -1,0 +1,73 @@
+api_homepage:
+    path:     /
+    defaults: { _controller: ApiBundle:Default:index }
+
+api_product_reviews:
+    path:  /product-reviews/{id}
+    defaults: { _controller: ApiBundle:Widget:productReviews, _format: json ,id: null}
+    requirements:
+        _method: GET
+        # id: '\d+'
+
+# api_customer_get:
+#     path:  /customers/{id}
+#     defaults: { _controller: ApiBundle:User:get, _format: ~ }
+#     requirements:
+#         _method: GET
+#         id: '\d+'
+
+# api_customer_delete:
+#     path:  /users/{id}
+#     defaults: { _controller: ApiBundle:User:remove, _format: ~ }
+#     requirements:
+#         _method: DELETE
+
+# api_customer_edit:
+#     path:  /users/{id}
+#     defaults: { _controller: ApiBundle:User:edit, _format: ~ }
+#     requirements:
+#         _method: PUT
+
+
+# Customer Request
+# api_widget_form:
+#     path: /widget/{widget}.{_format}
+#     defaults: { _controller: ApiBundle:Widget:form, _format: html, widget: 'form'}
+#     requirements:
+#         _method: GET
+
+api_widget_get:
+    path:  /widget/{id}
+    defaults: { _controller: ApiBundle:Widget:get, _format: html }
+    requirements:
+        _method: GET
+api_widget_delete:
+    path:  /delete/widget/{id}
+    defaults: { _controller: ApiBundle:Widget:remove, _format: ~ }
+    methods: [GET, DELETE]
+    # requirements:
+    #     _method: [GET, DELETE]
+
+api_widget_edit:
+    path:  /widget/{id}
+    defaults: { _controller: ApiBundle:Widget:edit, _format: ~ }
+    requirements:
+        _method: PUT
+
+api_widget_add:
+    path:  /widget
+    defaults: { _controller: ApiBundle:Widget:add, _format: ~ }
+    requirements:
+        _method: POST
+
+api_widget_data_get:
+    path:  /widget/data/{id}
+    defaults: { _controller: ApiBundle:Widget:getData, _format: json }
+    requirements:
+        _method: GET
+
+api_widget_get_script:
+    path:  /widget/script/{id}
+    defaults: { _controller: ApiBundle:Widget:getSnippnet, _format: ~ }
+    requirements:
+        _method: GET
